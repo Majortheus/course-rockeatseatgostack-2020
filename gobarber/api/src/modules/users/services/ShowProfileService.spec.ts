@@ -27,6 +27,9 @@ describe('UpdateProfile', () => {
   });
 
   it('should not be able to show the profile from non-existing user', async () => {
-    await expect(showProfileService.execute({ user_id: 'non-existing-user-id' })).rejects.toBeInstanceOf(AppError);
+    await expect(
+      showProfileService.execute({ 
+        user_id: 'non-existing-user-id' 
+      })).rejects.toBeInstanceOf(AppError);
   });
 });
