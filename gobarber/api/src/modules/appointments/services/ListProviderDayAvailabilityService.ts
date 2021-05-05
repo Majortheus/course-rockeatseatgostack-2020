@@ -1,5 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-import { getHours } from 'date-fns';
+import { getHours, isAfter } from 'date-fns';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
@@ -20,7 +20,7 @@ class ListProviderDayAvailabilityService {
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
-  ) {}
+  ) { }
 
   public async execute({
     provider_id,
@@ -44,14 +44,16 @@ class ListProviderDayAvailabilityService {
       (_, index) => hourStart + index,
     );
 
+    const currentDate = new Date(Date.now());
+
     const availability = eachHourArray.map(hour => {
-      const hasAppointmentInHour = appointments.find(
-        appointment => getHours(appointment.date) === hour,
-      );
+      const hasAppointmentInHour = appointments.find(appointment => getHours(appointment.date) === hour);
+
+      const compareDate = new Date(year, month - 1, day, hour);
 
       return {
         hour,
-        available: !hasAppointmentInHour,
+        available: !hasAppointmentInHour && isAfter(compareDate, currentDate),
       };
     });
 

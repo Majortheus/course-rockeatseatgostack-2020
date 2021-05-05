@@ -1,0 +1,2 @@
+CREATE DATABASE gostack_gobarber;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
