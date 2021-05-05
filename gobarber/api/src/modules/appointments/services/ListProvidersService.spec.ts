@@ -3,7 +3,7 @@ import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import ListProvidersService from './ListProvidersService';
 
-let fakeUserRepository: FakeUserRepository
+let fakeUserRepository: FakeUserRepository;
 let listProviders: ListProvidersService;
 
 describe('UpdateProfile', () => {
@@ -33,8 +33,6 @@ describe('UpdateProfile', () => {
     });
 
     const providers = await listProviders.execute({ user_id: loggedUser.id });
-
-    console.log(providers);
 
     expect(providers).toEqual([user1, user2]);
   });
