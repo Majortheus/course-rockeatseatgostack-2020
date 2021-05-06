@@ -1,5 +1,9 @@
+.vscode
 node_modules/
-.vscode/
+build/
+temp/
+.env
+coverage
 
 tmp/*
 !tmp/.gitkeep
