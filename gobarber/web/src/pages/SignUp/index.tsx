@@ -34,9 +34,7 @@ const SignUp: React.FC = () => {
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),
-          email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
+          email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
           password: Yup.string().min(6, 'Obrigatória ter no mínimo 6 dígitos'),
         });
 
@@ -84,12 +82,7 @@ const SignUp: React.FC = () => {
 
             <Input name="name" icon={FiUser} placeholder="Nome" />
             <Input name="email" icon={FiMail} placeholder="E-mail" />
-            <Input
-              name="password"
-              icon={FiLock}
-              type="password"
-              placeholder="Senha"
-            />
+            <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
 
             <Button type="submit">Cadastrar</Button>
           </Form>
