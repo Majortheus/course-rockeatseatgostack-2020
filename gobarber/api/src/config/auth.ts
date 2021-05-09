@@ -1,8 +1,8 @@
-interface IJWTConfig{
+interface IJWTConfig {
   jwt: {
-    secret: string,
-    expiresIn: string
-  }
+    secret: string;
+    expiresIn: string;
+  };
 }
 
 export default {

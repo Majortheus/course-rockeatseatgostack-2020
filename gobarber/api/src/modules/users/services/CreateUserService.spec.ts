@@ -20,7 +20,7 @@ describe('CreateUser', () => {
       fakeHashProvider,
       fakeCacheProvider,
     );
-  })
+  });
 
   it('should be able to create a new user', async () => {
     const user = await createuserService.execute({

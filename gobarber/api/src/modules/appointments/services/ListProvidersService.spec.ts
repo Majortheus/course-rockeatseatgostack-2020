@@ -11,7 +11,10 @@ describe('UpdateProfile', () => {
     fakeUserRepository = new FakeUserRepository();
     fakeCacheProvider = new FakeCacheProvider();
 
-    listProviders = new ListProvidersService(fakeUserRepository, fakeCacheProvider);
+    listProviders = new ListProvidersService(
+      fakeUserRepository,
+      fakeCacheProvider,
+    );
   });
 
   it('should be able to list the providers', async () => {

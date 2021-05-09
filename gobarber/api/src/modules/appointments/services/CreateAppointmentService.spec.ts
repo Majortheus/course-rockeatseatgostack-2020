@@ -18,9 +18,9 @@ describe('CreateAppointment', () => {
     createAppointmentService = new CreateAppointmentService(
       fakeAppointmentRepository,
       fakeNotificationsRepository,
-      fakeCacheProvider
+      fakeCacheProvider,
     );
-  })
+  });
 
   it('should be able to create a new appointment', async () => {
     jest.spyOn(Date, 'now').mockImplementationOnce(() => {

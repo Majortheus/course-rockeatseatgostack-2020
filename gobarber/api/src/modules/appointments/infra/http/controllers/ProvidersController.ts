@@ -4,7 +4,7 @@ import ListProvidersService from '@modules/appointments/services/ListProvidersSe
 
 export default class ProvidersController {
   public async index(req: Request, res: Response): Promise<Response> {
-    const user_id = req.user.id
+    const user_id = req.user.id;
 
     const listProviders = container.resolve(ListProvidersService);
 

@@ -15,11 +15,11 @@ interface IUploadConfig {
   };
 
   config: {
-    disk: {},
+    disk: {};
     aws: {
       bucket: string;
-    }
-  }
+    };
+  };
 }
 
 export default {
@@ -37,13 +37,13 @@ export default {
 
         return callback(null, fileName);
       },
-    })
+    }),
   },
 
   config: {
     disk: {},
     aws: {
-      bucket: 'aws-url'
-    }
+      bucket: 'aws-url',
+    },
   },
 } as IUploadConfig;

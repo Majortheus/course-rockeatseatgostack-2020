@@ -19,7 +19,7 @@ class ListProviderMonthAvailabilityService {
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
-  ) { }
+  ) {}
 
   public async execute({
     provider_id,
@@ -50,7 +50,8 @@ class ListProviderMonthAvailabilityService {
 
       return {
         day,
-        available: isAfter(compareDate, new Date()) &&  appointmentsInDay.length < 10,
+        available:
+          isAfter(compareDate, new Date()) && appointmentsInDay.length < 10,
       };
     });
 

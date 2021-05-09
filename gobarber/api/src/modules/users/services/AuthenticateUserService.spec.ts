@@ -8,7 +8,7 @@ let fakeHashProvider: FakeHashProvider;
 let authenticateUser: AuthenticateUserService;
 
 describe('AuthenticateUser', () => {
-  beforeEach(()=> {
+  beforeEach(() => {
     fakeUserRepository = new FakeUserRepository();
     fakeHashProvider = new FakeHashProvider();
 
@@ -16,7 +16,7 @@ describe('AuthenticateUser', () => {
       fakeUserRepository,
       fakeHashProvider,
     );
-  })
+  });
 
   it('should be able to authenticate', async () => {
     const user = await fakeUserRepository.create({

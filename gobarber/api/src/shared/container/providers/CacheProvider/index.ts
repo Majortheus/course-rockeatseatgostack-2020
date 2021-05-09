@@ -6,10 +6,6 @@ import RedisCacheProvider from '@shared/container/providers/CacheProvider/implem
 
 const providers = {
   cache: RedisCacheProvider,
-}
+};
 
-container.registerSingleton<ICacheProvider>(
-  'CacheProvider',
-  providers.cache,
-);
-
+container.registerSingleton<ICacheProvider>('CacheProvider', providers.cache);
