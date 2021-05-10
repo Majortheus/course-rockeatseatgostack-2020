@@ -40,8 +40,6 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation();
   const { signIn, user } = useAuth();
 
-  console.log(user);
-
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
       try {
@@ -58,6 +56,8 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
+        console.log({ email: data.email, password: data.password });
+
         await signIn({ email: data.email, password: data.password });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -67,7 +67,7 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [navigation, signIn],
+    [signIn],
   );
 
   const handleSubmit = useCallback(() => {

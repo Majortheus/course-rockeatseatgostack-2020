@@ -49,16 +49,24 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post('/sessions', { email, password });
+    console.log('signin');
+    console.log(api.defaults.baseURL);
 
-    const { token, user } = response.data;
+    try {
+      const response = await api.post('/sessions', { email, password });
+      console.log(response.data);
 
-    await AsyncStorage.multiSet([
-      ['@GoBarber:token', token],
-      ['@GoBarber:user', JSON.stringify(user)],
-    ]);
+      const { token, user } = response.data;
 
-    setData({ token, user });
+      await AsyncStorage.multiSet([
+        ['@GoBarber:token', token],
+        ['@GoBarber:user', JSON.stringify(user)],
+      ]);
+
+      setData({ token, user });
+    } catch (err) {
+      console.log(JSON.stringify(err));
+    }
   }, []);
 
   const signOut = useCallback(async () => {
