@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -31,7 +31,7 @@ export interface Provider {
 }
 
 const Dashboard: React.FC = () => {
-  const [providers, setProviders] = useState<Provider>([]);
+  const [providers, setProviders] = useState<Provider[]>([]);
 
   const { user, signOut } = useAuth();
   const { navigate } = useNavigation();
@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
   );
 
   useEffect(() => {
-    api.get<Provider>('/providers').then(response => {
+    api.get<Provider[]>('/providers').then(response => {
       setProviders(response.data);
     });
   }, []);
@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
           {'\n'}
           <UserName>{user.name}</UserName>
         </HeaderTitle>
-        <ProfileButton onPress={navigateToProfile}>
+        <ProfileButton onPress={signOut}>
           <UserAvatar source={{ uri: user.avatar_url }} />
         </ProfileButton>
       </Header>

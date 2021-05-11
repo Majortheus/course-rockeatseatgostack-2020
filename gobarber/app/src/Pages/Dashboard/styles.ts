@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   padding: 24px;
-  /* padding-top: ${getStatusBarHeight() + 24}px; */
+  padding-top: ${getStatusBarHeight() + 24}px;
   background: #28262e;
 
   flex-direction: row;
@@ -19,7 +19,7 @@ export const Header = styled.View`
 `;
 
 export const HeaderTitle = styled.Text`
-  color: #f4ede8;
+  color: #f5ede8;
   font-size: 20px;
   font-family: 'RobotoSlab-Regular';
   line-height: 28px;
