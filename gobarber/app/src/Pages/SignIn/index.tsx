@@ -56,8 +56,6 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        console.log({ email: data.email, password: data.password });
-
         await signIn({ email: data.email, password: data.password });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
