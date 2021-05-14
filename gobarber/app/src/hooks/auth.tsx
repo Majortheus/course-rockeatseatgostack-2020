@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '../services/api';
 
@@ -41,10 +35,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     async function loadStoragedData(): Promise<void> {
-      const [token, user] = await AsyncStorage.multiGet([
-        '@GoBarber:token',
-        '@GoBarber:user',
-      ]);
+      const [token, user] = await AsyncStorage.multiGet(['@GoBarber:token', '@GoBarber:user']);
 
       if (token[1] && user[1]) {
         api.defaults.headers.Authorization = `Bearer ${token[1]}`;
@@ -95,13 +86,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     [data.token],
   );
 
-  return (
-    <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, loading, updateUser }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user: data.user, signIn, signOut, loading, updateUser }}>{children}</AuthContext.Provider>;
 };
 
 export function useAuth(): AuthContextData {

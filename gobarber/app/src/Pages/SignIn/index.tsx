@@ -1,12 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import {
-  Image,
-  View,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-  TextInput,
-} from 'react-native';
+import { Image, View, ScrollView, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
@@ -18,14 +11,7 @@ import Button from '../../components/Button';
 
 import logoImg from '../../assets/logo.png';
 
-import {
-  Container,
-  Title,
-  ForgotPassword,
-  ForgotPasswordText,
-  CreateAccountButton,
-  CreateAccountButtonText,
-} from './styles';
+import { Container, Title, ForgotPassword, ForgotPasswordText, CreateAccountButton, CreateAccountButtonText } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { useAuth } from '../../hooks/auth';
 
@@ -38,7 +24,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const passwordRef = useRef<TextInput>(null);
   const navigation = useNavigation();
-  const { signIn, user } = useAuth();
+  const { signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -46,9 +32,7 @@ const SignIn: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
+          email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
           password: Yup.string().required('Senha Obrigatória'),
         });
 
@@ -78,26 +62,15 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        enabled
-      >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        >
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} enabled>
+        <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ flex: 1 }}>
           <Container>
             <Image source={logoImg} />
 
             <View>
               <Title>Faça seu logon</Title>
             </View>
-            <Form
-              ref={formRef}
-              style={{ width: '100%' }}
-              onSubmit={handleSignIn}
-            >
+            <Form ref={formRef} style={{ width: '100%' }} onSubmit={handleSignIn}>
               <Input
                 name="email"
                 icon="mail"
@@ -109,15 +82,7 @@ const SignIn: React.FC = () => {
                 returnKeyType="next"
                 onSubmitEditing={handleFocusPassword}
               />
-              <Input
-                ref={passwordRef}
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                secureTextEntry
-                returnKeyType="send"
-                onSubmitEditing={handleSubmit}
-              />
+              <Input ref={passwordRef} name="password" icon="lock" placeholder="Senha" secureTextEntry returnKeyType="send" onSubmitEditing={handleSubmit} />
 
               <Button onPress={handleSubmit}>Entrar</Button>
             </Form>
